@@ -1,0 +1,13 @@
+mysql_server_id: "{{ mysql_id }}"
+mysql_replication_role: '{{ mysql_role }}'
+mysql_replication_master: 'db-1.lief.loc'
+mysql_users: 
+  - name: 'ncadmin'
+    password: 'changeIT'
+    host: 'cloud-1.lxd'
+    priv: 'nextcloud.*:ALL'
+mysql_replication_user: 
+  name: 'rep'
+  password: 'changeIT'
+mysql_root_password: changeIT
+mysql_root_password_update: true

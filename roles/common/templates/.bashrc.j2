@@ -1,0 +1,32 @@
+#jinja2: trim_blocks:False
+# .bashrc
+
+# User specific aliases and functions
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+echo "--------------------------------------------------------------------------"
+echo "                    This system is managed by Ansible"
+echo "--------------------------------------------------------------------------"
+echo "This is {{ ansible_fqdn }} running {{ ansible_distribution }}."
+{% for item in ag_bashrc_info -%}
+{% for key, value in item.iteritems() -%}
+echo "{{ key }}{{ value }}"
+{% endfor %}
+{%- endfor %}
+echo ""
+{% if extra_notes_motd is defined %}
+{{ extra_notes_motd }}
+{% endif %}
+echo ""
+echo "Yours,"
+echo "email: {{ ag_bashrc_sysadmins_email }}"
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+echo "Last ansible run: {{ ansible_date_time.iso8601 }}"

@@ -1,0 +1,43 @@
+---
+
+- hosts: all
+  tasks:
+  - include_role:
+      name: common
+  tags: common
+
+- hosts: dns
+  tasks:
+  - include_role:
+      name: install-bind
+  tags: dns
+
+- hosts: rweb
+  tasks:
+  - include_role:
+      name: install-rweb
+  tags: rweb
+
+- hosts: db
+  tasks:
+  - include_role:
+      name: install-db
+  tags: db
+
+- hosts: cloud
+  tasks:
+  - include_role:
+      name: install-nextcloud
+  tags: cloud
+
+- hosts: vpn
+  tasks:
+  - include_role:
+      name: install-openvpn
+  tags: vpn
+
+- hosts: vod
+  tasks:
+  - include_role:
+      name: install-plex
+  tags: vod

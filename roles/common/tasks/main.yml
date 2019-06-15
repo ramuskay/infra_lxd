@@ -1,0 +1,9 @@
+---
+- name: Copy new bashrc
+  template:
+    src: .bashrc.j2
+    dest: /root/.bashrc 
+
+#- name: Set CentOS hostname
+#  hostname:
+#    name: "{{ ansible.fqdn }}".lief.loc

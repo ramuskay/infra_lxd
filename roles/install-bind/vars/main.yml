@@ -1,0 +1,54 @@
+---
+bind_zone_dir: /var/local/named-zones
+bind_zone_file_mode: '0660'
+bind_allow_query:
+  - any
+bind_listen_ipv4:
+  - any
+#bind_listen_ipv6:
+#  - any
+#bind_acls:
+#  - name: acl1
+#    match_list:
+#      - 172.17.0.0/16
+bind_forwarders:
+  - '8.8.8.8'
+  - '8.8.4.4'
+bind_recursion: true
+bind_query_log: 'data/query.log'
+bind_check_names: 'master ignore'
+bind_zone_master_server_ip: 240.204.0.10
+bind_zone_minimum_ttl: "2D"
+bind_zone_ttl: "2W"
+bind_zone_time_to_refresh: "2D"
+bind_zone_time_to_retry: "2H"
+bind_zone_time_to_expire: "2W"
+bind_zone_domains:
+  - name: 'lief.loc'
+    networks:
+      - '240.204.0'
+    #ipv6_networks:
+    #  - '2001:db9::/48'
+    name_servers:
+      - ns1.acme-inc.com.
+      - ns2.acme-inc.com.
+    hostmaster_email: monitor
+    #mail_servers:
+    #  - name: mail001
+    #    preference: 10
+    hosts:
+      - {name: master, ip: 240.204.0.1, aliases: [mas,truc]}
+      - {name: '@', ip: 240.204.0.10, aliases: [dns]}
+      - {name: rweb-1, ip: 240.204.0.13}
+      - {name: db-1, ip: 240.204.0.8}
+      - {name: db-2, ip: 240.204.0.9}
+      - {name: cloud-1, ip: 240.204.0.14}
+      - {name: vpn-1, ip: 240.204.0.50}
+      - {name: vpn-2, ip: 240.204.0.51}
+      - {name: nas-1, ip: 240.204.0.99}
+      - {name: vod-1, ip: 240.204.0.11}
+      - {name: test-1, ip: 240.204.0.21}
+      - {name: test-2, ip: 240.204.0.22}
+      - {name: test-1, ip: 240.204.0.31}
+      - {name: evie-1, ip: 240.204.0.30}
+      - {name: vod-2, ip: 240.204.0.12}

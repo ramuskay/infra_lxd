@@ -1,0 +1,10 @@
+DNS-1;240.204.0.10;centos
+RWEB-1;240.204.0.13;centos
+DB-1;240.204.0.8;centos
+DB-2;240.204.0.9;centos
+CLOUD-1;240.204.0.14;ubuntu;nextcloud
+VPN-1;240.204.0.50;ubuntu
+VOD-1;240.204.0.11;centos;plex
+VOD-2;240.204.0.12;ubuntu;plex
+TEST-1;240.204.0.31;centos
+EVIE-1;240.204.0.30;centos

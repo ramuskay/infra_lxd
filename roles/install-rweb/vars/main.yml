@@ -1,0 +1,51 @@
+#nginx:
+#  full_chain: "/etc/letsencrypt/live/beerus.top/fullchain.pem"
+#  priv_key: "/etc/letsencrypt/live/beerus.top/privkey.pem"
+
+nginx:
+  full_chain: "fullchain.crt"
+  priv_key: "privkey.key"
+  path: "/etc/nginx"
+
+nginx_vhosts:
+  - listen: "80"
+    server_name: "changeIT"
+    filename: "changeIT"
+    template: "/etc/ansible/roles/install-rweb/templates/vhost.j2"
+    extra_parameters: |
+      location / {
+           proxy_pass         http://IP/;
+      }
+  - listen: "80"
+    server_name: "changeIT"
+    filename: "changeIT"
+    template: "/etc/ansible/roles/install-rweb/templates/vhost.j2"
+    extra_parameters: |
+      location / {
+           proxy_pass         http://IP/;
+      }
+  - listen: "443 ssl"
+    server_name: "changeIT"
+    filename: "changeIT"
+    template: "/etc/ansible/roles/install-rweb/templates/vhost.j2"
+    extra_parameters: |
+      location / {
+           proxy_pass         https://IP/;
+      }
+  - listen: "80"
+    filename: "changeIT"
+    server_name: "changeIT"
+    template: "/etc/ansible/roles/install-rweb/templates/vhost.j2"
+    extra_parameters: |
+      location / {
+           proxy_pass         http://IP/;
+      }
+      location /tautulli {
+           proxy_pass         http://IP/;
+      }
+  #- listen: "443 ssl http2 default_server"
+  - listen: "80 default_server"
+    filename: "default.conf"
+    server_name: "_"
+    root: "/var/www/default"
+    index: "index.html"

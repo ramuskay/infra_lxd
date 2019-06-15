@@ -1,0 +1,38 @@
+#jinja2: trim_blocks:False
+# .bashrc
+
+# User specific aliases and functions
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+echo "--------------------------------------------------------------------------"
+echo "                    This system is managed by Ansible"
+echo "--------------------------------------------------------------------------"
+echo "This is {{ ansible_fqdn }} running {{ ansible_distribution }}."
+{% for item in ag_bashrc_info -%}
+{% for key, value in item.iteritems() -%}
+echo "{{ key }}{{ value }}"
+{% endfor %}
+{%- endfor %}
+echo ""
+echo ""
+echo "NOTES :"
+echo "  - Show list of users :"
+echo "    * SELECT host, user, password FROM mysql.user;"
+echo "  - List grants for a specific user :"
+echo "    * SHOW GRANTS FOR 'example'@'CLOUD-1.lxd';"
+echo "  - Delete user:"
+echo "    * DROP USER 'example'@'CLOUD-1.lxd';"
+echo ""
+echo ""
+echo "Yours,"
+echo "email: {{ ag_bashrc_sysadmins_email }}"
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+echo "Last ansible run: {{ ansible_date_time.iso8601 }}"

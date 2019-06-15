@@ -1,0 +1,32 @@
+---
+nextcloud_trusted_proxies: rweb-1.lief.loc
+nextcloud_trusted_domain:
+  - "cloud.lief.loc"
+  - "{{ ansible_default_ipv4.address }}"
+nextcloud_install_db: false
+nextcloud_db_host: "db-1.lief.loc"
+nextcloud_db_pwd: "S3cr3t"
+nextcloud_mysql_root_pwd: "R0ut3"
+#nextcloud_install_tls: false
+nextcloud_admin_name: "admin"
+nextcloud_admin_pwd: "Azer-1234"
+nextcloud_data_dir: "/data"
+nextcloud_apps:
+  passwords: "https://git.mdns.eu/nextcloud/passwords/-/jobs/7620/artifacts/raw/passwords.tar.gz"
+  #calendar-1.6.4:
+  #  source: "https://github.com/nextcloud/calendar/archive/v1.6.4.tar.gz"
+  #contacts-3.0.5:
+  #  source: "https://github.com/nextcloud/contacts/archive/v3.0.5.tar.gz"
+
+#TEST CENTOS
+
+#php_version: '7.2'
+#php_custom: yes
+#php_ver: "{{ php_version }}"
+#php_pkg_spe:
+#  - "php-imap"
+#  - "php-imagick"
+#  - "php-xml"
+#  - "php-zip"
+#  - "php-mbstring"
+#  - "php-redis"

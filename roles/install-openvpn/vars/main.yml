@@ -1,0 +1,9 @@
+openvpn_port: 1194
+openvpn_host: "changeIT"
+openvpn_proto: tcp
+# Additional routes to be pushed to clients - Default 'no'
+openvpn_push_routes_to_client:
+  - route 240.204.0.0 255.255.255.0
+openvpn_unified_client_profiles: yes
+openvpn_client_user:
+  - name: changeIT

@@ -1,0 +1,22 @@
+:x
+//  position: fixed; right: 0; bottom: 0;
+//  min-width: 100%; min-height: 100%;
+//  width: auto; height: auto; z-index: -100;
+//  background: url(beerus.png) no-repeat;
+//  background-size: cover;
+//  object-fit: cover;
+//}
+
+video#bgvid {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);        
+}
+
+body {
+     width:90%;
+     margin:0 auto;
+}

@@ -1,0 +1,12 @@
+---
+# The variables file used by the playbooks in the dbservers group.
+# These don't have to be explicitly imported by vars_files: they are autopopulated.
+
+extra_notes_motd: |
+  echo "NOTES :"
+  echo "  - Show list of users :"
+  echo "    * SELECT host, user, password FROM mysql.user;"
+  echo "  - List grants for a specific user :"
+  echo "    * SHOW GRANTS FOR 'example'@'CLOUD-1.lxd';"
+  echo "  - Delete user:"
+  echo "    * DROP USER 'example'@'CLOUD-1.lxd';"

@@ -1,0 +1,23 @@
+---
+
+- name: "[PREREQ] Install dependencies"
+  yum:
+    name: epel-release
+
+- import_role:
+    name: Stouts.openvpn
+
+- name: Configure firewalld
+  firewalld:
+    port: 1194/tcp
+    permanent: yes
+    immediate: yes
+    state: enabled
+
+- name: Create bunch of users
+  user:
+    name: "{{ item.name }}"
+    password: "{{ item.password }}"
+  with_items: 
+    - { name: lief, password: "$6$mysecretsalt$PpvmO84Gz1LuL324CencjzLZJulhB4Xs3xL3KNyVvcPmbmuw4mTZZWL6gZtrJiakY8hYvoAXtLcsuNzSEOXVm0" }
+    

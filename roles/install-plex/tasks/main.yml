@@ -1,0 +1,14 @@
+---
+
+- import_role:
+    name: wilmardo.plex
+
+- name: Configure firewalld
+  firewalld:
+    port: "{{ item }}"
+    permanent: yes
+    immediate: yes
+    state: enabled
+  with_items:
+    - 8181/tcp
+    - 32400/tcp

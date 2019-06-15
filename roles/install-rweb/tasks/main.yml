@@ -1,0 +1,42 @@
+- import_role:
+    name: geerlingguy.nginx
+
+- name: Install lynx to debug
+  yum:
+    name: lynx
+    state: present
+
+- name: Configure firewalld
+  firewalld:
+    service: "{{ item }}"
+    permanent: yes
+    immediate: yes
+    state: enabled
+  with_items:
+    - http
+    - https
+
+- name: Create directory for default website
+  file:
+    path: /var/www/default
+    state: directory
+    owner: nginx
+    group: nginx
+    mode: 0755
+
+- name: Copying the files
+  copy:
+    src: "{{ role_path }}/files/websites"
+    dest: /var/www/default
+    owner: nginx
+    group: nginx
+    mode: 0755
+
+- name: Copying the certificates
+  copy:
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "{{ nginx.path }}"
+  with_items:
+    - "{{ nginx.full_chain }}"
+    - "{{ nginx.priv_key }}"
+

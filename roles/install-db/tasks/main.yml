@@ -1,0 +1,19 @@
+---
+
+- import_role:
+    name: geerlingguy.mysql
+
+#- name: Set mysql user privileges
+#  mysql_user:
+#    name: ncadmin
+#    host: cloud-1.lxd
+#    password: "{{ mysql_users.password }}"
+#    priv: "nextcloud.*:ALL"
+#    state: present
+
+- name: Configure firewalld
+  firewalld:
+    service: mysql
+    permanent: yes
+    immediate: yes
+    state: enabled

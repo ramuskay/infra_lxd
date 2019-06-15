@@ -1,0 +1,7 @@
+---
+
+
+- hosts: cloud.lief.loc
+  tasks:
+    - shell: "lxc config device add CLOUD-1 nfs disk source=/data path=/data"
+        

@@ -1,0 +1,38 @@
+---
+#- debug:
+#    msg: "Test"
+
+#- name: Install yum-utils
+#  yum:
+#    name: "{{ item }}"
+#    state: present
+#  with_items:
+#    - yum-utils
+#   
+#- name: Add remi-php72
+#  yum_repository:
+#    name: remi-php72
+#    description: Remi's PHP 7.2 RPM repository for Enterprise Linux $releasever - $basearch
+#    mirrorlist: http://rpms.remirepo.net/enterprise/$releasever/php72/mirror
+#    enabled: yes
+#    gpgcheck: 1
+#    gpgkey: http://rpms.remirepo.net/RPM-GPG-KEY-remi
+
+- name: "[PREREQ] Yum install dependance"
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - php-gd
+    - php-curl
+    - php-mysql
+    - nfs-common
+
+- import_role:
+    name: aalaesar.install_nextcloud
+
+#- name: Configure firewalld
+#  firewalld:
+#    service: http
+#    permanent: yes
+#    state: enabled
+#    immediate: yes

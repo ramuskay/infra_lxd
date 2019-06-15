@@ -1,0 +1,11 @@
+---
+#- debug:
+#    msg: "Test"
+- import_role:
+    name: bertvv.bind
+- name: Configure firewalld
+  firewalld:
+    service: dns
+    permanent: yes
+    immediate: yes
+    state: enabled
